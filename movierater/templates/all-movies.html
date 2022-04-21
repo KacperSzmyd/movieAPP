@@ -2,8 +2,18 @@
 
 {% block content %}
 
+    <div>
+        <a href="{% url 'create-movie' %}">Create movie</a>
+        <hr>
+    </div>
+
     {% for movie in movies %}
-        <p>{{ movie }}</p>
+        <div>
+            <small><a href="{% url 'update-movie' movie.id %}">Update</a></small>
+            <small><a href="{% url 'delete-movie' movie.id %}">Delete</a></small>
+            <p>{{ movie }}</p>
+            <hr>
+        </div>
     {% endfor %}
 
 

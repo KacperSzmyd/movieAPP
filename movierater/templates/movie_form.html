@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    {% if page == 'create' %}
+        <div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ movie_form.as_p }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    {% else %}
+        <div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ movie_form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <a href="{% url 'home' %}"> Back</a>
+{% endblock content %}
