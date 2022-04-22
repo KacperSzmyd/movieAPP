@@ -7,7 +7,7 @@ class Movie(models.Model):
     premiere_date = models.DateField(null=True, blank=True)
     imdb_rating = models.DecimalField(max_digits=4, decimal_places=2,
                                       null=True, blank=True)
-    #poster = models.ImageField(upload_to="plakaty", null=True, blank=True)
+    poster = models.ImageField(upload_to="posters", null=True, blank=True)
 
     def title_with_release_year(self):
         return "{} ({})".format(self.title, self.release_year)

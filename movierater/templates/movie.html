@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div>
+        <h2>{{ movie.title }}</h2>
+        <p>premiere date: {{ movie.premiere_date }}</p>
+        <hr>
+        <p>{{ movie.description }}</p>
+        <hr>
+        <p>imdb rating: {{ movie.imdb_rating }}</p>
+    </div>
+    <a href="{% url 'home' %}">Home page</a>
+{% endblock %}
