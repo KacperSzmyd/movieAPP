@@ -3,7 +3,7 @@
 {% block content %}
     {% if page == 'create' %}
         <div>
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data" >
                 {% csrf_token %}
                 {{ movie_form.as_p }}
                 <input type="submit" value="Submit">
@@ -11,7 +11,7 @@
         </div>
     {% else %}
         <div>
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ movie_form.as_p }}
                 <button type="submit">Submit</button>

@@ -13,7 +13,7 @@ class MovieForm(ModelForm):
     class Meta:
         model = Movie
         fields = ['title', 'release_year', 'description',
-                  'premiere_date', 'imdb_rating']
+                  'premiere_date', 'imdb_rating', 'poster']
 
 
 class RateForm(ModelForm):

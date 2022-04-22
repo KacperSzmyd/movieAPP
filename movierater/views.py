@@ -24,7 +24,7 @@ def get_movie(request, pk):
 
 def add_movie(request):
     page = 'create'
-    movie_form = MovieForm(request.POST or None)
+    movie_form = MovieForm(request.POST or None, request.FILES or None)
     if movie_form.is_valid():
         movie_form.save()
         return redirect('home')
@@ -37,7 +37,7 @@ def add_movie(request):
 
 def update_movie(request, pk):
     movie = Movie.objects.get(id=pk)
-    movie_form = MovieForm(request.POST or None, instance=movie)
+    movie_form = MovieForm(request.POST or None, request.FILES or None, instance=movie)
     if movie_form.is_valid():
         movie_form.save()
         return redirect('home')
