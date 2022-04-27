@@ -1,23 +1,33 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    {% if page == 'create' %}
-        <div>
-            <form method="POST" action="" enctype="multipart/form-data" >
-                {% csrf_token %}
-                {{ movie_form.as_p }}
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    {% else %}
-        <div>
-            <form method="POST" action="" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ movie_form.as_p }}
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    {% endif %}
+    <div>
+        <form method="POST" action="" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ movie_form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div>
+        <br><hr>
+        {% for actor in actors %}
+            <p>{{ actor.name }} {{ actor.surname }}</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <br><hr>
+        <h4>Add an actor or actress:</h4>
+        <form method="post" action="">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            {{ actor_form.name }}
+            <label for="surname">Surname:</label>
+            {{ actor_form.surname }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
     <a href="{% url 'home' %}"> Back</a>
 {% endblock content %}

@@ -16,6 +16,8 @@
             <small><a href="{% url 'login' %}">Login</a></small>
             <small><a href="{% url 'register' %}">Register</a></small>
         {% endif %}
+        <small><a href="{% url 'home' %}"> Home Page</a></small>
+        <hr>
     </navbar>
 
 {% for msg in messages %}

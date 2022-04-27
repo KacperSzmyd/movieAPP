@@ -9,8 +9,10 @@
 
     {% for movie in movies %}
         <div>
-            <small><a href="{% url 'update-movie' movie.id %}">Update</a></small>
-            <small><a href="{% url 'delete-movie' movie.id %}">Delete</a></small>
+            {% if request.user.is_authenticated %}
+                <small><a href="{% url 'update-movie' movie.id %}">Update</a></small>
+                <small><a href="{% url 'delete-movie' movie.id %}">Delete</a></small>
+            {% endif %}
             <p>{{ movie }}</p>
             <small><a href="{% url 'movie' movie.id %}">Details</a></small>
             <hr>

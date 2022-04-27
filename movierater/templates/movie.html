@@ -3,7 +3,9 @@
 {% block content %}
     <div>
         <div>
-            <img src="/posters/{{ movie.poster }}">
+            {% if movie.poster %}
+                <img src="/posters/{{ movie.poster }}">
+            {% endif %}
         </div>
         <div>
             <h2>{{ movie.title }}</h2>
@@ -12,9 +14,40 @@
             <p>{{ movie.description }}</p>
             <hr>
             <p>imdb rating: {{ movie.imdb_rating }}</p>
+            <hr>
         </div>
 
-        <a href="{% url 'home' %}">Home page</a>
+        {% if actors %}
+            <div>
+                <h4>Actors:</h4>
+                {% for actor in actors %}
+                    <p>{{ actor.name }} {{ actor.surname }}</p>
+                    <hr>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div>
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ review_form.as_p }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% else %}
+        <p>You have to <a href="{% url 'login' %}">log in</a> if you want to add your own review</p>
+    {% endif %}
+
+    <div>
+        <hr>
+        {% for review in reviews %}
+            <p>@{{ review.author.username }}</p>
+            <p>{{ review.stars}}/5</p>
+            <p>{{ review.body }}</p>
+            <hr>
+        {% endfor %}
     </div>
 
 {% endblock %}

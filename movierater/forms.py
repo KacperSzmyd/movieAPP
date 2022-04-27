@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Movie, Rate, Actor
+from .models import Movie, Review, Actor
 from django.forms import ModelForm
+
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:
@@ -16,10 +17,10 @@ class MovieForm(ModelForm):
                   'premiere_date', 'imdb_rating', 'poster']
 
 
-class RateForm(ModelForm):
+class ReviewForm(ModelForm):
     class Meta:
-        model = Rate
-        fields = ['stars', 'review']
+        model = Review
+        fields = ['stars', 'body']
 
 
 class ActorForm(ModelForm):

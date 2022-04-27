@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
+
 
 class Movie(models.Model):
     title = models.CharField(max_length=64, blank=False, unique=True)
@@ -16,8 +18,9 @@ class Movie(models.Model):
         return self.title_with_release_year()
 
 
-class Rate(models.Model):
-    review = models.TextField(default="", blank=True)
+class Review(models.Model):
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    body = models.TextField(default="", blank=True)
     stars = models.PositiveSmallIntegerField(default=5)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
@@ -26,3 +29,6 @@ class Actor(models.Model):
     name = models.CharField(max_length=32)
     surname = models.CharField(max_length=32)
     movies = models.ManyToManyField(Movie, related_name="actors")
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'

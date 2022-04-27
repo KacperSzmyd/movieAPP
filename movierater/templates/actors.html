@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    {% if actors %}
+        {% for actor in actors %}
+            <h3>{{ actor.name }} {{ actor.surname }}</h3>
+            <h4>Starred in:</h4>
+            {% for movie in actor.movies.all %}
+                <p>{{ movie.title }} {{ movie.imdb_rating }}</p>
+            {% endfor %}
+            <hr>
+        {% endfor %}
+    {% else %}
+    {% endif %}
+{% endblock content %}

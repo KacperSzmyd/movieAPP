@@ -27,7 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movierater.apps.MovieraterConfig'
+
+    'movierater.apps.MovieraterConfig',
+
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
