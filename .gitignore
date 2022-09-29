@@ -1,3 +1,6 @@
 .idea
+.env
 venv
 posters
+db.sqlite3
+datadump.json
